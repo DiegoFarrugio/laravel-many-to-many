@@ -35,7 +35,9 @@ class ProjectController extends Controller
     public function create()
     {
         $types = Type::all();
-        return view('admin.projects.create', compact('types'));
+        $technologys = Technology::all();
+
+        return view('admin.projects.create', compact('types, technologys'));
     }
 
     /**
@@ -56,6 +58,13 @@ class ProjectController extends Controller
             'type_id' => $projectData['type_id'],
         ]);
 
+        if (isset($projectData['technologys'])) {
+            foreach ($projectData['technologys'] as $singleTechnologyId) {
+                
+                $project->technologys()->attach($singleTechnologyId);
+            }
+        }
+
         return redirect()->route('admin.projects.show', compact('project'));
     }
 
@@ -73,8 +82,9 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $types = Type::all();
+        $technologys = Technology::all();
 
-        return view('admin.projects.edit', compact('project, types'));
+        return view('admin.projects.edit', compact('project, types, technologys'));
     }
 
     /**
@@ -94,7 +104,14 @@ class ProjectController extends Controller
             'type_id' => $projectData['type_id'],
         ]);
 
-        return view('admin.projects.show', compact('project'));
+        if (isset($projectData['technologys'])) {
+            $project->technologys()->sync($projectData['technologys']);
+        }
+        else {
+            $project->technologys()->detach();
+        }
+
+        //return view('admin.projects.show', compact('project'));
         return redirect()->route('admin.projects.show', compact('project'));
     }
 

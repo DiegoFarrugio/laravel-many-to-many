@@ -17,9 +17,15 @@ class Project extends Model
         'type_id'
     ];
 
-    public function type()
+    //One To Many
+    public function category()
     {
         return $this->belongsTo(Type::class);
     }
-    
+
+    //Many To Many
+    public function tags()
+    {
+        return $this->belongToMany(Technology::class);
+    }    
 }

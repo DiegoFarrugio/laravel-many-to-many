@@ -23,6 +23,7 @@
                             <th scope="col">ID</th>
                             <th scope="col">Titolo</th>
                             <th scope="col">Type</th>
+                            <th scope="col">Technology</th>
                             <th scope="col">Creato il</th>
                             <th scope="col">Azioni</th>
                           </tr>
@@ -40,6 +41,14 @@
                                         @else
                                             -
                                         @endif
+                                </td>
+                                <td>
+                                    @forelse ($project->technologys as $technology)
+                                    <a href="{{ route('admin.technologys.show', ['technology' => $technology->id]) }}">
+                                        <span class="badge text-bg-primary">{{$technology->title}}</span>
+                                    @empty
+                                        -  
+                                    @endforelse
                                 </td>
                                 <td>{{$project->created_at->format('H:i d/m/Y')}}</td>
                                 <td>

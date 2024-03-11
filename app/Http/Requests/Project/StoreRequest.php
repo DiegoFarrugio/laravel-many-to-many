@@ -28,6 +28,7 @@ class StoreRequest extends FormRequest
             'title' => 'required|string|max:255',
             'type_id' => 'nullable|exists:types,id',
             'content' => 'required|string|max:10000',
+            'technologys' => 'nullable|array|exists:tags,id',
         ];
     }
 

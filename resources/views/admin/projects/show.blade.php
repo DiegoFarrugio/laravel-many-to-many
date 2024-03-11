@@ -20,6 +20,15 @@
                         </h2>
                     @endif
 
+                    <div>
+                        @forelse ($project->technologys as $technology)
+                             <a href="{{ route('admin.technologys.show', ['technology' => $technology->id]) }}">
+                                <span class="badge text-bg-primary">{{$technology->title}}</span>
+                        @empty
+                        -  
+                        @endforelse
+                    </div>
+
                     <p>
                         {{$project->content}}
                     </p>

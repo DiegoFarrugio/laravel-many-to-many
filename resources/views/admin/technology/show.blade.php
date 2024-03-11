@@ -15,5 +15,27 @@
         </div>
     </div>
 
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="text-center">
+                        Tutti i post associati a Technology
+                    </h2>
+
+                    <ul>
+                        @foreach ($technology->projects as $project)
+                        <li>
+                            <a href="{{route('admin.projects.show', ['project' => $project->id])}}">
+                                {{$project->title}}
+                            </a>
+                        </li>
+                        @endforeach
+                    </ul> 
+                </div>
+            </div>
+        </div>
+    </div>
+
     
 @endsection
