@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Validation\Rule;
-use Illuminate\Support\Str;
+//use Illuminate\Validation\Rule;
+//use Illuminate\Support\Str;
 
 use App\Http\Requests\Project\StoreRequest as ProjectStoreRequest;
 use App\Http\Requests\Project\UpdateRequest as ProjectUpdateRequest;
@@ -15,6 +15,11 @@ use App\Http\Requests\Project\UpdateRequest as ProjectUpdateRequest;
 //Models 
 use App\Models\Project;
 use App\Models\Type;
+use App\Models\Technology;
+
+// Helpers
+use Illuminate\Support\Str;
+
 
 
 class ProjectController extends Controller
@@ -24,8 +29,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project:: all();
-
+        $projects = Project::all();
+        //$technologies = Technology::all();
         return view('admin.projects.index', compact('projects'));
     }
 
@@ -35,9 +40,9 @@ class ProjectController extends Controller
     public function create()
     {
         $types = Type::all();
-        $technologys = Technology::all();
+        $technologies = Technology::all();
 
-        return view('admin.projects.create', compact('types, technologys'));
+        return view('admin.projects.create', compact('types', 'technologies'));
     }
 
     /**
@@ -58,10 +63,10 @@ class ProjectController extends Controller
             'type_id' => $projectData['type_id'],
         ]);
 
-        if (isset($projectData['technologys'])) {
-            foreach ($projectData['technologys'] as $singleTechnologyId) {
+        if (isset($projectData['technologies'])) {
+            foreach ($projectData['technologies'] as $singleTechnologyId) {
                 
-                $project->technologys()->attach($singleTechnologyId);
+                $project->technologies()->attach($singleTechnologyId);
             }
         }
 
@@ -82,9 +87,9 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $types = Type::all();
-        $technologys = Technology::all();
+        $technologies = Technology::all();
 
-        return view('admin.projects.edit', compact('project, types, technologys'));
+        return view('admin.projects.edit', compact('project', 'types', 'technologies'));
     }
 
     /**
@@ -104,11 +109,11 @@ class ProjectController extends Controller
             'type_id' => $projectData['type_id'],
         ]);
 
-        if (isset($projectData['technologys'])) {
-            $project->technologys()->sync($projectData['technologys']);
+        if (isset($projectData['technologies'])) {
+            $project->technologies()->sync($projectData['technologies']);
         }
         else {
-            $project->technologys()->detach();
+            $project->technologies()->detach();
         }
 
         //return view('admin.projects.show', compact('project'));
@@ -120,6 +125,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        $project->delete();
         return redirect()->route('admin.projects.index');
     }
 }

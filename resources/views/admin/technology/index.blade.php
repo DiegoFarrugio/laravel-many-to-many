@@ -8,11 +8,11 @@
             <div class="card">
                 <div class="card-body">
                     <h1 class="text-center text-success mb-5">
-                        Tutti i Technologys!
+                        Tutti i Technology!
                     </h1>
 
                     <div class="mb-3">
-                        <a href="{{ route('admin.technologys.create') }}" class="btn btn-success w-100">
+                        <a href="{{ route('admin.technologies.create') }}" class="btn btn-success w-100">
                             + Aggiungi
                         </a>
                     </div>
@@ -27,21 +27,21 @@
                           </tr>
                         </thead>
                         <tbody>
-                            @foreach ($technologys as $technology)
+                            @foreach ($technologies as $technology)
                             <tr>
                                 <th scope="row">{{$technology->id}} </th>
                                 <td>{{$technology->title}}</td>
                                 <td>{{$technology->created_at->format('H:i d/m/Y')}}</td>
                                 <td>
-                                    <a href="{{route('admin.technologys.show', ['technology' => $technology->id ])}}" class="btn btn-primary ">
+                                    <a href="{{route('admin.technologies.show', ['technology' => $technology->id ])}}" class="btn btn-primary ">
                                         PULSANTE
                                     </a>
 
-                                    <a href="{{ route('admin.technologys.edit', ['technology' => $technology->id]) }}" class="btn btn-xs btn-warning">
+                                    <a href="{{ route('admin.technologies.edit', ['technology' => $technology->id]) }}" class="btn btn-xs btn-warning">
                                         Modifica
                                     </a>
 
-                                    <form class="d-inline-block" action="{{ route('admin.technologys.destroy', ['technology' => $technology->id]) }}" method="post" onsubmit="return confirm('Sei sicuro di voler eliminare?');">
+                                    <form class="d-inline-block" action="{{ route('admin.technologies.destroy', ['technology' => $technology->id]) }}" method="post" onsubmit="return confirm('Sei sicuro di voler eliminare?');">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger">

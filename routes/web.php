@@ -40,7 +40,7 @@ Route::prefix('admin')
 
     Route::resource('types', AdminTypeController::class);
 
-    Route::resource('technologys', AdminTechnologyController::class);
+    Route::resource('technologies', AdminTechnologyController::class);
 });
 
 require __DIR__.'/auth.php';

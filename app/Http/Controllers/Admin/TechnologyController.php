@@ -20,9 +20,9 @@ class TechnologyController extends Controller
      */
     public function index()
     {
-        $technologys = Technology::all();
+        $technologies = Technology::all();
         //dd($technologys);
-        return view('admin.technology.index', compact('technologys'));
+        return view('admin.technology.index', compact('technologies'));
     }
 
     /**
@@ -47,7 +47,7 @@ class TechnologyController extends Controller
             'slug' => $slug,
         ]);
 
-        return redirect()->route('admin.technologys.show', ['technology' => $technology->id]);
+        return redirect()->route('admin.technologies.show', ['technology' => $technology->id]);
     }
 
     /**
@@ -80,7 +80,7 @@ class TechnologyController extends Controller
             'slug' => $slug,
         ]);
 
-        return redirect()->route('admin.technologys.show', ['technology' => $technology->id]);
+        return redirect()->route('admin.technologies.show', ['technology' => $technology->id]);
     }
 
     /**
@@ -90,6 +90,6 @@ class TechnologyController extends Controller
     {
         $technology->delete();
 
-        return redirect()->route('admin.technologys.index');
+        return redirect()->route('admin.technologies.index');
     }
 }

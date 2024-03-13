@@ -9,7 +9,7 @@ use Illuminate\Database\Seeder;
 //Models
 use App\Models\Project;
 use App\Models\Type;;
-
+use App\Models\Technology;
 
 //Helpers
 use Illuminate\Support\Str;

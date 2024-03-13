@@ -18,14 +18,14 @@ class Project extends Model
     ];
 
     //One To Many
-    public function category()
+    public function type()
     {
         return $this->belongsTo(Type::class);
     }
 
     //Many To Many
-    public function tags()
+    public function technologies()
     {
-        return $this->belongToMany(Technology::class);
+        return $this->belongsToMany(Technology::class);
     }    
 }

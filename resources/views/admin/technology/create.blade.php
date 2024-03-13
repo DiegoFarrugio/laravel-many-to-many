@@ -1,21 +1,21 @@
 @extends('layouts.app')
 
-@section('page-title', 'Technologys Create')
+@section('page-title', 'Technologies Create')
 
 @section('main-content')
 <h1>
-    Technologys Create
+    Technologies Create
 </h1>
 
 <div class="row">
     <div class="col py-4">
         <div class="mb-4">
-            <a href="{{ route('admin.technologys.index') }}" class="btn btn-primary">
-                Torna all'index dei Technologys
+            <a href="{{ route('admin.technologies.index') }}" class="btn btn-primary">
+                Torna all'index dei technologies
             </a>
         </div>
 
-        <form action="{{ route('admin.technologys.store') }}" method="POST">
+        <form action="{{ route('admin.technologies.store') }}" method="POST">
             {{--
                 C   Cross
                 S   Site

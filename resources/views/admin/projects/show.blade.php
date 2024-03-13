@@ -21,8 +21,8 @@
                     @endif
 
                     <div>
-                        @forelse ($project->technologys as $technology)
-                             <a href="{{ route('admin.technologys.show', ['technology' => $technology->id]) }}">
+                        @forelse ($project->technologies as $technology)
+                             <a href="{{ route('admin.technologies.show', ['technology' => $technology->id]) }}">
                                 <span class="badge text-bg-primary">{{$technology->title}}</span>
                         @empty
                         -  

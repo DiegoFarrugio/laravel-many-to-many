@@ -26,9 +26,9 @@ class UpdateRequest extends FormRequest
     {
         return [
             'title' => 'required|string|max:255',
-            'type_id' => 'nullable|exists:types,id',
             'content' => 'required|string|max:10000',
-            'technologys' => 'nullable|array|exists:tags,id',
+            'type_id' => 'nullable|exists:types,id',
+            'technologies' => 'nullable|array|exists:technologies,id',
         ];
     }
 

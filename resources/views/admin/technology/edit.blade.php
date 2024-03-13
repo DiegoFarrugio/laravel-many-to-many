@@ -7,12 +7,12 @@
 <div class="row">
     <div class="col py-4">
         <div class="mb-4">
-            <a href="{{ route('admin.technologys.index') }}" class="btn btn-primary">
-                Torna all'index dei Project
+            <a href="{{ route('admin.technologies.index') }}" class="btn btn-primary">
+                Torna all'index dei Type
             </a>
         </div>
 
-        <form action="{{ route('admin.technologys.update', ['technology' => $technology->id]) }}" method="POST">
+        <form action="{{ route('admin.technologies.update', ['technology' => $technology->id]) }}" method="POST">
             {{--
                 C   Cross
                 S   Site
